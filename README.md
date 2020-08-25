@@ -1,24 +1,27 @@
-### Problem Description
+## Problem Description
 RipeApe pharmacy is developing a self-service automated system to alert customers about potential drug interactions for both prescription and over-the-counter drugs. Many medications should not be taken together or should not be taken if a patient has certain symptoms and allergies. Evaluating all the criteria for whether a patient can take a particular medication requires the patient's medical history and expert knowledge from a health care provider. The system, however, can provide an instant guideline to keep patients informed and minimize the risks.
 You are assigned by RipeApe to develop a beta version of the system using the first order logic inference. Patient history and drug compatibility data will be encoded as first order logic clauses in the knowledge base. The program takes a query of new drug list and provide a logical conclusion whether to issue a warning.
 
-### Solution
+## Solution
 Used First Order Logic. Implemented Forward Chaining from scratch.
 There are 10 example input files given. 
 
-#### Input and Output file formats:
-The program reads the input files and writes the output files in the described format.
+## Input and Output file formats:
+The program `logic_resolver.py` reads the input files and writes the output files in the described format.
 
 
-##### Format for input.txt
-<N = NUMBER OF QUERIES> <QUERY 1>
-...
-<QUERY N>
-<K = NUMBER OF GIVEN SENTENCES IN THE KNOWLEDGE BASE> <SENTENCE 1>
-...
-<SENTENCE K>
+### Format for input.txt
+<N = NUMBER OF QUERIES>   
+<QUERY 1>  
+...   
+<QUERY N>  
+<K = NUMBER OF GIVEN SENTENCES IN THE KNOWLEDGE BASE>   
+<SENTENCE 1>  
+...  
+  <SENTENCE K>  
+    
 
-The first line contains an integer N specifying the number of queries. The following N lines contain one query per line. The line after the last query contains an integer K specifying the number of sentences in the knowledge base. The remaining K lines contain the sentences in the knowledge base, one sentence per line.
+  The first line contains an integer N specifying the number of queries. The following N lines contain one query per line. The line after the last query contains an integer K specifying the number of sentences in the knowledge base. The remaining K lines contain the sentences in the knowledge base, one sentence per line.
 
 **Query format:**
 Each query will be a single literal of the form `Predicate(Constant_Arguments)` or `~Predicate(Constant_Arguments)` and will not contain any variables. Each predicate will have between 1 and 25 constant arguments. Two or more arguments will be separated by commas.
@@ -47,30 +50,30 @@ given predicate name will not appear with different number of arguments.
 14. The KB will be true (i.e., will not contain contradictions).
 
 
-##### Format for output.txt:
+### Format for output.txt:
 For each query, determine if that query can be inferred from the knowledge base or not, one query per line:
-<ANSWER 1>
-...
-<ANSWER N>
+<ANSWER 1>  
+...   
+<ANSWER N>  
 
-Each answer is either TRUE if you can prove that the corresponding query sentence is true given the knowledge base, or FALSE if you cannot.
+  Each answer is either TRUE if you can prove that the corresponding query sentence is true given the knowledge base, or FALSE if you cannot.
 
 
 
-#### Examples:
+### Examples:
 **Example 1:**
-input.txt:
+  input.txt:
 
 1
 Take(Alice,NSAIDs)
 2
 Take(x,Warfarin) => ~Take(x,NSAIDs) Take(Alice,Warfarin)
 
-output.txt should be:
+  output.txt should be:
 FALSE
 
 **Example 2:**
-input.txt:
+  input.txt:
 
 2
 Alert(Bob,NSAIDs)
@@ -80,12 +83,12 @@ Take(x,Warfarin) => ~Take(x,NSAIDs) HighBP(x) => Alert(x,NSAIDs) Take(Bob,Antaci
 Take(Bob,VitA)
 HighBP(Bob)
 
-output.txt:
+  output.txt:
 TRUE
 FALSE
 
 **Example 3:**
-input.txt:
+  input.txt:
 
 3
 Alert(Alice,VitE)
@@ -100,7 +103,7 @@ HighBP(John)
 Take(John,Timolol)
 Take(Bob,Warfarin)
 
-output.txt:
+  output.txt:
 FALSE
 TRUE
 FALSE
