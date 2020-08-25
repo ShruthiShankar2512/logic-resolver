@@ -12,13 +12,13 @@ The program `logic_resolver.py` reads the input files and writes the output file
 
 ### Format for input.txt
 <N = NUMBER OF QUERIES>   
-<QUERY 1>  
-...   
-<QUERY N>  
-<K = NUMBER OF GIVEN SENTENCES IN THE KNOWLEDGE BASE>   
-<SENTENCE 1>  
+QUERY 1 
 ...  
-  <SENTENCE K>  
+QUERY N  
+<K = NUMBER OF GIVEN SENTENCES IN THE KNOWLEDGE BASE>   
+SENTENCE 1   
+...  
+SENTENCE K 
     
 
   The first line contains an integer N specifying the number of queries. The following N lines contain one query per line. The line after the last query contains an integer K specifying the number of sentences in the knowledge base. The remaining K lines contain the sentences in the knowledge base, one sentence per line.
@@ -51,62 +51,13 @@ given predicate name will not appear with different number of arguments.
 
 
 ### Format for output.txt:
-For each query, determine if that query can be inferred from the knowledge base or not, one query per line:
-<ANSWER 1>  
+For each query, determine if that query can be inferred from the knowledge base or not, one query per line:  
+
+ANSWER 1  
 ...   
-<ANSWER N>  
+ANSWER N  
 
   Each answer is either TRUE if you can prove that the corresponding query sentence is true given the knowledge base, or FALSE if you cannot.
-
-
-
-### Examples:
-**Example 1:**
-  input.txt:
-
-1
-Take(Alice,NSAIDs)
-2
-Take(x,Warfarin) => ~Take(x,NSAIDs) Take(Alice,Warfarin)
-
-  output.txt should be:
-FALSE
-
-**Example 2:**
-  input.txt:
-
-2
-Alert(Bob,NSAIDs)
-Alert(Bob,VitC)
-5
-Take(x,Warfarin) => ~Take(x,NSAIDs) HighBP(x) => Alert(x,NSAIDs) Take(Bob,Antacids)
-Take(Bob,VitA)
-HighBP(Bob)
-
-  output.txt:
-TRUE
-FALSE
-
-**Example 3:**
-  input.txt:
-
-3
-Alert(Alice,VitE)
-Alert(Bob,VitE)
-Alert(John,VitE)
-9
-Migraine(x) & HighBP(x) => Take(x,Timolol) Take(x,Warfarin) & Take(x,Timolol) => Alert(x,VitE) Migraine(Alice)
-Migraine(Bob)
-HighBP(Bob)
-OldAge(John)
-HighBP(John)
-Take(John,Timolol)
-Take(Bob,Warfarin)
-
-  output.txt:
-FALSE
-TRUE
-FALSE
 
 
 ### Limitations:
