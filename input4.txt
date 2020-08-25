@@ -1,0 +1,9 @@
+1
+NotToneDeaf(Grace)
+4
+Instrument(y) & Musician(x) => Plays(x,y)
+Instrument(y) & Plays(x,y) => NotToneDeaf(x)
+Musician(Grace)
+Instrument(I1)
+
+
